@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Screening AI System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #013a5c;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin:0px auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #013a5c;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 7px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 7px;
+        }
+
+        ul {
+            text-align: left;
+            display: inline-block;
+            font-size: 1.1em;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        input[type="file"] {
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            font-size: 1em;
+            display: block;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Resume Screening AI Base System</h1>
+        <p>This system supports TXT and PDF files, to be uploaded and it will work on the following:</p>
+        <ul>
+            <li>Resume Score ,tips and suggestions for Improvements</li>
+            <li>Resume Categorization</li>
+            <li>Resume Job Recommendation</li>
+            <li>Resume Parsing (Information Extraction)</li>
+        </ul>
+        <h2>Upload Your Resume</h2>
+        <form action="/pred" method="post" enctype="multipart/form-data">
+            <input type="file" name="resume" accept=".pdf, .txt" required ,>
+            <input type="submit" value="Submit">
+        </form>
+        {% if message %}
+        <p class="text-center">{{message}}</p>
+        {% endif %}
+
+        {% if predicted_category %}
+        <br>
+        <hr>
+        <br>
+        <p><strong>Your Resume Score:</strong> {{ resume_score }}</p>
+        <h3>Recommendations:</h3>
+    <ul>
+        {% for rec in recommendations %}
+        <li>{{ rec }}</li>
+        {% endfor %}
+    </ul>
+    <p class="text-center><em>Analyzed on {{ timestamp }}</em></p>
+        <p class="text-center"><b><strong>Category:</strong></b> {{predicted_category}}</p>
+        <p class="text-center"><b><strong>Recommended Job:</strong></b> {{recommended_job}}</p>
+        <hr>
+        <h1 class="text-center">Extracted Information</h1>
+        <p class="text-center"><b><strong>Name:</strong></b> {{name}}</p>
+        <p class="text-center"><b><strong>Phone No:</strong></b> {{phone}}</p>
+        <p class="text-center"><b><strong>Email:</strong></b> {{email}}</p>
+        {% if extracted_skills %}
+        <p class="text-center"><b><strong>Skills</strong></b></p>
+        <ul class="list-unstyled text-center">
+            {% set skills_str = extracted_skills | join(', ') %}
+            <li>{{ skills_str }}</li>
+        </ul>
+        
+        {% else %}
+        <p class="text-center">No skills founds.........</p>
+        <br>
+        {% if extracted_education %}
+        <h1 class="text-center">Education:</h1>
+        <ul class="list-unstyled text-center">
+            {% for edu in extracted_education %}
+            <li>{{ edu }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-center">No Education founds.........</p>
+        <br>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
+
+
+
+    </div>
+</body>
+
+</html>
