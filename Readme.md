@@ -29,8 +29,8 @@ This project is an AI-powered system designed to automate the process of screeni
 
 1. Clone the Repository:
 
-```git clone https://github.com/shrinivask007/AI_Resume_Screening.git ```
-```cd AI_Resume_Screening ```
+-  ```git clone https://github.com/shrinivask007/Ai-resume-screening.git ```
+-  ```cd Ai-resume-screening ```
 
 2. Run the Flask Web Application:
 ```python app.py```
