@@ -45,10 +45,10 @@ This project is an AI-powered system designed to automate the process of screeni
 - The application will display the score, tips for improvement, and recommended job categories.
 
 ## How It Works
-- Resume Upload: Users upload a resume (TXT or PDF) via the web interface.
-- Text Extraction: The system extracts text from the uploaded file (supports both TXT and PDF).
-- Resume Scoring: It scores the resume based on the presence of key sections.
-- Recommendations: Personalized recommendations are provided to improve the resume.
-- Categorization: The resume is classified into a category using machine learning models.
-- Job Recommendation: Based on the resume's content, suitable job roles are suggested.
-- Parsing: The system extracts key details such as name, email, skills, and education for further analysis.
+- **Resume Upload**: Users upload a resume (TXT or PDF) via the web interface.
+- **Text Extraction**: The system extracts text from the uploaded file (supports both TXT and PDF).
+- **Resume Scoring**: It scores the resume based on the presence of key sections.
+- **Recommendations**: Personalized recommendations are provided to improve the resume.
+- **Categorization**: The resume is classified into a category using machine learning models.
+- **Job Recommendation**: Based on the resume's content, suitable job roles are suggested.
+- **Parsing**: The system extracts key details such as name, email, skills, and education for further analysis.
